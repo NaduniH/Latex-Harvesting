@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import NavigationBar from "../../components/NavBar";
+import Admin from "../../assets/images/admin.png";
+import Footer from "../../components/Footer/footer";
 
 const Dashboard = () => {
   const cardStyle = {
@@ -26,18 +28,29 @@ const Dashboard = () => {
       <NavigationBar />
 
       <Container>
-        <header className="d-flex justify-content-between align-items-center py-3">
-          <h1><b>Welcome to Executive Dashboard</b></h1>
-          <div className="d-flex align-items-center">
-            <Image
-              src="/assets/images/logo.jpg"
-              // roundedCircle
-              width={40}
-              height={40}
-            />
-            <span className="ml-2">Admin</span>
-          </div>
-        </header>
+        {/* <header className="d-flex justify-content-between align-items-center py-3"> */}
+        <Row>
+          <Col xs={12} md={10} className="mb-4 mb-md-0 ">
+            <h1>
+              <b>Welcome to Executive Dashboard</b>
+            </h1>
+          </Col>
+
+          <Col xs={12} md={2} className="mb-4 mb-md-0 ">
+            <div className="d-flex align-items-center">
+              <Image
+                src={Admin}
+                alt="Admin"
+                style={{
+                  width: "50%",
+                  height: "50%",
+                }}
+              />
+              {/* <span className="ml-2">Admin</span> */}
+            </div>
+          </Col>
+        </Row>
+        {/* </header> */}
         <section className="mt-4">
           <h2 className="mb-4">Performance</h2>
           <Row>
@@ -64,7 +77,6 @@ const Dashboard = () => {
               </Card>
             </Col>
           </Row>
-          
 
           <Row>
             <Col xs={12} md={3} className="mb-4 mb-md-0 "></Col>
@@ -83,6 +95,7 @@ const Dashboard = () => {
           </Row>
         </section>
       </Container>
+      <Footer />
     </div>
   );
 };

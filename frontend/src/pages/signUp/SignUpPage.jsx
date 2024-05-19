@@ -1,176 +1,63 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  Card,
-  Form,
-  Button,
-  Alert,
-} from "react-bootstrap";
-import signupImage from "../../assets/images/loginImg.jpg"; // Replace with the correct image path
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./SignUpPage.css"; // Make sure to create and use an appropriate CSS file
+import SignUpImg from "../../assets/images/loginImg.jpg";
 
-const SignupPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSignupRedirect = () => {
-    navigate("/dashboard"); // Redirect to the appropriate page after signup
-  };
-
-  const handleSignup = () => {
-    if (
-      name.trim() !== "" &&
-      email.trim() !== "" &&
-      phoneNumber.trim() !== "" &&
-      password.trim() !== ""
-    ) {
-      console.log("Name:", name);
-      console.log("Email:", email);
-      console.log("Phone Number:", phoneNumber);
-      console.log("Password:", password);
-      setShowSuccess(true);
-      setShowError(false);
-      setTimeout(() => {
-        setShowSuccess(false);
-        handleSignupRedirect();
-      }, 3000);
-    } else {
-      setShowSuccess(false);
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 3000);
-    }
-  };
-
+const SignUpPage = () => {
   return (
-    <div style={{ backgroundColor: "#e8f4f8", height: "100vh" }}>
-      <Container
-        className="justify-content-center"
-        fluid
-        style={{
-          width: "100%",
-          margin: "10px",
-        }}
-      >
-        <Row className="justify-content-center">
-          <Col md={4}>
+    <Container fluid className="vh-100">
+      <Row className="h-100">
+        <Col md={4} className="p-0">
+          <div className="image-container">
             <Image
-              src={signupImage}
-              alt="Signup"
-              style={{
-                width: "100%",
-                height: "100vh",
-              }}
+              src={SignUpImg}
+              alt="SignUp"
+              // style={{
+              //   width: "100%",
+              //   height: "100vh",
+              // }}
             />
-          </Col>
-          <Col md={8}>
-            <Card
-              style={{
-                borderRadius: "20px",
-                boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
-                width: "100%",
-                height: "100vh",
-              }}
-            >
-              {showSuccess && (
-                <Alert variant="success" className="mt-3">
-                  Signup successful! Redirecting...
-                </Alert>
-              )}
-              {showError && (
-                <Alert variant="danger" className="mt-3">
-                  Please fill in all fields.
-                </Alert>
-              )}
-              <Card.Body
-                className="text-center"
-                style={{
-                  borderRadius: "20px",
-                  boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
-                  padding: "150px",
-                  width: "auto",
-                  height: "100vh",
-                }}
-              >
-                <Card.Title
-                  className="text-center"
-                  style={{ fontSize: "24px", color: "#333" }}
-                >
-                  Welcome to Sign Up
-                </Card.Title>
-                <hr></hr>
-                <Form>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="text"
-                      id="name"
-                      placeholder="Enter name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                      style={{ borderRadius: "10px" }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="email"
-                      id="email"
-                      placeholder="Enter email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      style={{ borderRadius: "10px" }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="text"
-                      id="phoneNumber"
-                      placeholder="Enter phone number"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
-                      style={{ borderRadius: "10px" }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="password"
-                      id="password"
-                      placeholder="Enter Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      style={{ borderRadius: "10px" }}
-                    />
-                  </Form.Group>
-                  <Button
-                    variant="success"
-                    className="btn-block"
-                    onClick={handleSignup}
-                    style={{ borderRadius: "10px" }}
-                  >
-                    Sign Up
-                  </Button>
-                </Form>
-                <p className="mt-3 text-center" style={{ color: "#333" }}>
-                  Already have an account? <a href="/login">Login</a>
-                </p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+          </div>
+        </Col>
+        <Col
+          md={8}
+          className="d-flex align-items-center justify-content-center"
+        >
+          <Form className="w-75 form-background">
+            <h2 className="text-center mb-4"><b>Welcome to Sign up</b></h2>
+            <Form.Group controlId="formName">
+              {/* <Form.Label>Name</Form.Label> */}
+              <Form.Control type="text" placeholder="Enter your name" />
+            </Form.Group>
+            <br></br>
+            <Form.Group controlId="formEmail">
+              {/* <Form.Label>Email</Form.Label> */}
+              <Form.Control type="email" placeholder="Enter your email" />
+            </Form.Group>
+            <br></br>
+            <Form.Group controlId="formPhoneNumber">
+              {/* <Form.Label>Phone Number</Form.Label> */}
+              <Form.Control type="tel" placeholder="Enter your phone number" />
+            </Form.Group>
+            <br></br>
+            <Form.Group controlId="formPassword">
+              {/* <Form.Label>Password</Form.Label> */}
+              <Form.Control type="password" placeholder="Enter your password" />
+            </Form.Group>
+            <br></br>
+            <Button variant="success" type="submit" className="w-100">
+              Register
+            </Button>
+            <div className="text-center mt-3">
+              <p>You already have an account?<a href="/login"> Login</a></p>
+              
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
-export default SignupPage;
+export default SignUpPage;
