@@ -7,7 +7,7 @@ import Seal from "../../assets/images/Seal.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-light text-dark py-2"> {/* Reduced padding from py-4 to py-2 */}
+    <footer className=" text-dark py-2"> {/* Reduced padding from py-4 to py-2 */}
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={3} className="text-center text-md-left">
