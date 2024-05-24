@@ -6,7 +6,7 @@ import SignUpPage from "./pages/signUp/SignUpPage";
 import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
-// import VFADetails from "./pages/VFADetails";
+// import VfaDetails from "./pages/VfaDetails";
 import Footer from "./components/Footer/footer";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
-        {/* <Route path="/vfa" element={<VFADetails />} /> */}
+        {/* <Route path="/vfa" element={<VfaDetails />} /> */}
         <Route path="/footer" element={<Footer />} />
 
         {/* Add other routes here */}

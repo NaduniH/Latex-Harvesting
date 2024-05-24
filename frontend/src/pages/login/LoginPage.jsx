@@ -24,7 +24,7 @@ const LoginPage = () => {
           md={8}
           className="d-flex align-items-center justify-content-center"
         >
-          <Form className="w-75 form-background">
+          <Form className="w-75  form-background">
             <h2 className="text-center mb-4 ">
               <b>Welcome to Login Page</b>
             </h2>

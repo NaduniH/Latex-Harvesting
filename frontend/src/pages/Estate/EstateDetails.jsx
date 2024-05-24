@@ -1,5 +1,14 @@
-import React from "react";
-import { Container, Row, Col, Form, Button, Table, InputGroup, FormControl } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Table,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./EstateDetails.css"; // Make sure to create and use an appropriate CSS file
 import NavigationBar from "../../components/NavBar";
@@ -9,47 +18,81 @@ const EstateDetailsPage = () => {
   const dummyData = [
     {
       LXBNumber: "001",
-      stateName: "Mr.Niha",
+      stateName: "Diyalape",
       ownerName: "Mr.sunil",
-      ownerContact: "07106126047",
-      assistantContact: "07123456789",
+      ownerContact: "0710612604",
+      assistantContact: "0712345678",
       helperContact: "0712657347",
       averageTapping: "350L",
-      area: "230area",
-      location: "dialuma akurassa",
+      area: "230 area",
+      location: "Diyalape,Akurassa",
       root: "kp",
-    }
+    },
   ];
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredData = dummyData.filter((data) =>
+    Object.values(data).some((value) =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   return (
     <div>
       <NavigationBar />
-  
+      <h2 className="my-4 ">Estate's Details</h2>
+
       <Container fluid className="vh-100">
-              <h2 className="my-4">Estate's Details</h2>
-              <br></br>
+        <br />
         <Row className="mb-3">
           <Col className="d-flex flex-wrap align-items-center">
-            <div className="d-flex flex-wrap align-items-center justify-content-start">
-              {["All", "Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"].map((filter, index) => (
-                <Button key={index} variant="success" className="mx-3 mb-2">
-                  {filter}
-                </Button>
-              ))}
-                          
-              <InputGroup className="search-bar mx-1 mb-2 ml-auto">
-                <FormControl placeholder="Search" aria-label="Search" />
-                <InputGroup.Text>
-                  <i className="bi bi-search"></i>
-                </InputGroup.Text>
-              </InputGroup>
+            <div className="d-flex flex-wrap align-items-center justify-content-between w-100">
+              <div className="d-flex">
+                {["All", "Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"].map(
+                  (filter, index) => (
+                    <Button key={index} variant="success" className="mx-3 mb-2">
+                      {filter}
+                    </Button>
+                  )
+                )}
+              </div>
             </div>
           </Col>
-              </Row>
-              <Button variant="success" className="mx-1 mb-2 ml-auto">New state pending</Button>
-              <br></br>
-              <br></br>
-
+        </Row>
+        <Row className="align-items-center">
+          <Col md={10} className="d-flex justify-content-end">
+            <InputGroup
+              className="search-bar mb-2"
+              style={{ maxWidth: "300px" }}
+            >
+              <FormControl
+                placeholder="Search"
+                aria-label="Search"
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+              <InputGroup.Text>
+                <i className="bi bi-search"></i>
+              </InputGroup.Text>
+            </InputGroup>
+          </Col>
+          <Col md={2} className="d-flex justify-content-end">
+            <Button
+              variant="success"
+              className="mb-2"
+              style={{ maxWidth: "200px" }}
+            >
+              New state pending
+            </Button>
+          </Col>
+        </Row>
+        <br />
+        <br />
         <Row>
           <Col>
             <Table striped bordered hover responsive>
@@ -69,7 +112,7 @@ const EstateDetailsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {dummyData.map((data, index) => (
+                {filteredData.map((data, index) => (
                   <tr key={index}>
                     <td>{data.LXBNumber}</td>
                     <td>{data.stateName}</td>
@@ -91,7 +134,6 @@ const EstateDetailsPage = () => {
           </Col>
         </Row>
       </Container>
-  
       <Footer />
     </div>
   );

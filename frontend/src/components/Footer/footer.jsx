@@ -7,21 +7,21 @@ import Seal from "../../assets/images/Seal.png";
 
 const Footer = () => {
   return (
-    <footer className=" text-dark py-2"> {/* Reduced padding from py-4 to py-2 */}
-      <Container>
+    <footer className="text-dark py-1"> {/* Reduced padding from py-4 to py-2 */}
+      {/* <Container> */}
         <Row className="align-items-center">
           <Col xs={12} md={3} className="text-center text-md-left">
             <Image
               src={Logo}
               alt="logo"
               style={{
-                width: "50%",
-                height: "50%",
+                width: "30%",
+                height: "30%",
               }}
             />
           </Col>
-          <Col xs={12} md={3} className="text-center my-2 my-md-0"> {/* Reduced margin */}
-            <h5 className="mb-2"><b>Contact Us</b></h5> {/* Reduced bottom margin */}
+          <Col xs={12} md={3} className="text-center"> {/* Reduced margin */}
+            <h6 className="mb-2"><b>Contact Us</b></h6> {/* Reduced bottom margin */}
             <address className="mb-2"> {/* Reduced bottom margin */}
               No.95B, Zone A, EPZ,
               <br />
@@ -31,7 +31,7 @@ const Footer = () => {
             </address>
           </Col>
 
-          <Col xs={12} md={3} className="text-center my-2 my-md-0"> {/* Reduced margin */}
+          <Col xs={12} md={3} className="text-center"> {/* Reduced margin */}
             <br />
             Tel: <a href="tel:+94114311200">+94 114 311 200</a>
             <br />
@@ -44,13 +44,13 @@ const Footer = () => {
               src={Seal}
               alt="Seal"
               style={{
-                width: "80%",
-                height: "80%",
+                width: "40%",
+                height: "30%",
               }}
             />
           </Col>
         </Row>
-      </Container>
+      {/* </Container> */}
     </footer>
   );
 };

@@ -12,7 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const VFADetails = () => {
+const VfaDetails = () => {
   const [dateRange, setDateRange] = useState("DAY");
   const [showVfaRange, setShowVfaRange] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -70,9 +70,9 @@ const VFADetails = () => {
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col>
-          <Line data={graphData} />
-        </Col>
+        {/* <Col>
+          <Line data={{ graphData }} />
+        </Col> */}
       </Row>
       <Row className="mb-3">
         <Col>
@@ -109,11 +109,11 @@ const VFADetails = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <InputGroup.Append>
+            {/* <InputGroup.Append>
               <Button variant="secondary" onClick={handleSearch}>
                 Search
               </Button>
-            </InputGroup.Append>
+            </InputGroup.Append> */}
           </InputGroup>
         </Col>
       </Row>
@@ -151,4 +151,4 @@ const VFADetails = () => {
   );
 };
 
-export default VFADetails;
+export default VfaDetails;

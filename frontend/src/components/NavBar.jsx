@@ -1,23 +1,24 @@
-// import React from "react";
-import { Navbar, Nav, NavDropdown, Image, Container } from "react-bootstrap";
-import Logo from "./../assets/images/logo.jpg";
+import React from "react";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Image,
+  Container,
+  Button,
+} from "react-bootstrap";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import Logo from "./../assets/images/NavImage.png";
+import "./NavBar.css";
 
 const NavigationBar = () => {
   return (
-    <Navbar
-      style={{ backgroundColor: "#FFFFFF" }}
-      bg="light"
-      expand="lg"
-      collapseOnSelect
-      className="bg-body-tertiary"
-    >
+    <Navbar className="main-navbar" expand="lg" collapseOnSelect>
       <div className="container-fluid">
         <Navbar.Brand href="#home">
           <img
-            style={{
-              marginLeft: "40px",
-            }}
-            width="70"
+            width="180"
             height="50"
             className="d-inline-block align-top"
             src={Logo}
@@ -25,7 +26,11 @@ const NavigationBar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto ">
+          <Nav
+            variant="underline"
+            defaultActiveKey="/home"
+            className="mr-2 navbar"
+          >
             <Nav.Link href="dashboard">Home</Nav.Link>
             <NavDropdown title="Employee" id="basic-nav-dropdown">
               <NavDropdown.Item href="#link1-1">Supervisor</NavDropdown.Item>
@@ -40,8 +45,7 @@ const NavigationBar = () => {
             {/* <Nav.Link href="#link4">Contact</Nav.Link> */}
             <Nav.Link href="login">Login</Nav.Link>
             <Nav.Link href="signup">
-              {/* <button>Register</button> */}
-              Register
+              <Button>Register</Button>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

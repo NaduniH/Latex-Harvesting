@@ -19,7 +19,7 @@ const HelperDetails = () => {
       empNo: 1201,
       name: "Mr. Sachintha",
       vehicle: "IF4498",
-      route: "Kandy",
+      route: "Horana",
       contact: "07128514169",
       email: "sachin@gmail.com",
     },
@@ -38,7 +38,7 @@ const HelperDetails = () => {
       <NavigationBar />
 
       <Container className="helper-details my-4">
-        <Row className="mb-4">
+        <Row className="mb-2 ">
           <Col>
             <h2>Helper's Details</h2>
           </Col>
