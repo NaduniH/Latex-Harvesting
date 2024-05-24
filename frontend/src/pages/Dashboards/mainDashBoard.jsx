@@ -3,12 +3,15 @@ import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import NavigationBar from "../../components/NavBar";
 import Admin from "../../assets/images/admin.png";
 import Footer from "../../components/Footer/footer";
+import "./mainDashBoard.css";
 
 const Dashboard = () => {
   const cardStyle = {
     border: "none",
     borderRadius: "8px",
     color: "#fff", // White text color
+    height: "10rem",
+    padding: "30px",
   };
 
   const cardDryStyle = {
@@ -27,13 +30,13 @@ const Dashboard = () => {
     <div>
       <NavigationBar />
 
-      <Container>
+      <Container fluid className="dashboard-container">
         {/* <header className="d-flex justify-content-between align-items-center py-3"> */}
         <Row>
           <Col xs={12} md={10} className="mb-4 mb-md-0 ">
-            <h1>
+            <h2>
               <b>Welcome to Executive Dashboard</b>
-            </h1>
+            </h2>
           </Col>
 
           <Col xs={12} md={2} className="mb-4 mb-md-0 ">
@@ -44,6 +47,7 @@ const Dashboard = () => {
                 style={{
                   width: "50%",
                   height: "50%",
+                  paddingTop: "30px",
                 }}
               />
               {/* <span className="ml-2">Admin</span> */}
@@ -52,9 +56,16 @@ const Dashboard = () => {
         </Row>
         {/* </header> */}
         <section className="mt-4">
-          <h2 className="mb-4">Performance</h2>
           <Row>
-            <Col xs={12} md={6} className="mb-4 mb-md-0 p-3">
+            <Col md={1}></Col>
+            <Col md={4}>
+              <h3>Performance</h3>
+            </Col>
+          </Row>
+          {/* <h3 className="mb-4">Performance</h3> */}
+          <Row>
+            <Col md={2} className="mb-4 mb-md-0 p-3"></Col>
+            <Col md={4} className="mb-4 mb-md-0 p-3">
               <Card
                 style={{ ...cardStyle, ...cardRateStyle }}
                 className="text-center"
@@ -65,7 +76,7 @@ const Dashboard = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs={12} md={6} className="mb-4 mb-md-0 p-3">
+            <Col md={4} className="mb-4 mb-md-0 p-3">
               <Card
                 style={{ ...cardStyle, ...cardRateStyle }}
                 className="text-center"
@@ -76,11 +87,12 @@ const Dashboard = () => {
                 </Card.Body>
               </Card>
             </Col>
+            <Col md={2} className="mb-4 mb-md-0 p-3"></Col>
           </Row>
 
           <Row>
-            <Col xs={12} md={3} className="mb-4 mb-md-0 "></Col>
-            <Col xs={12} md={6} className="mb-4 mb-md-0 p-3">
+            <Col md={4} className="mb-4 mb-md-0 p-3"></Col>
+            <Col md={4} className="mb-4 mb-md-0 p-3">
               <Card
                 style={{ ...cardStyle, ...cardRateStyle }}
                 className="text-center"
@@ -91,7 +103,7 @@ const Dashboard = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs={12} md={3} className="mb-4 mb-md-0 "></Col>
+            <Col md={4} className="mb-4 mb-md-0 p-3"></Col>
           </Row>
         </section>
       </Container>
