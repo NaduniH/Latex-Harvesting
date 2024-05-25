@@ -45,9 +45,9 @@ const Dashboard = () => {
                 src={Admin}
                 alt="Admin"
                 style={{
-                  width: "50%",
-                  height: "50%",
-                  paddingTop: "30px",
+                  width: "70%",
+                  height: "70%",
+                  paddingTop: "20px",
                 }}
               />
               {/* <span className="ml-2">Admin</span> */}

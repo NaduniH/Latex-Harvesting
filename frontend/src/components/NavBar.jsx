@@ -33,7 +33,7 @@ const NavigationBar = () => {
           >
             <Nav.Link href="dashboard">Home</Nav.Link>
             <NavDropdown title="Employee" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#link1-1">Supervisor</NavDropdown.Item>
+              <NavDropdown.Item href="supervisor">Supervisor</NavDropdown.Item>
               <NavDropdown.Item href="#link1-2">Driver</NavDropdown.Item>
               <NavDropdown.Item href="helper">Helper</NavDropdown.Item>
             </NavDropdown>
