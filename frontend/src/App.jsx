@@ -25,7 +25,6 @@ function App() {
         {/* Add other routes here */}
       </Routes>
     </Router>
-
   );
 }
 
