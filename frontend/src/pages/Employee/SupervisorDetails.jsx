@@ -34,8 +34,8 @@ const SupervisorDetails = () => {
     <div>
       <NavigationBar />
 
-      <Container className="employee-details my-4">
-        <Row className="mb-2 ">
+      <Container className="employee-details my-2">
+        <Row>
           <Col>
             <h2>Supervisor's Details</h2>
           </Col>

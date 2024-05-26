@@ -38,7 +38,7 @@ const HelperDetails = () => {
       <NavigationBar />
 
       <Container className="employee-details my-4">
-        <Row className="mb-2 ">
+        <Row>
           <Col>
             <h2>Helper's Details</h2>
           </Col>

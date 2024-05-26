@@ -29,11 +29,11 @@ const LoginPage = () => {
               <b>Welcome to Login Page</b>
             </h2>
             <Form.Group controlId="formEmail">
-              <Form.Control type="email" placeholder="Enter your email" />
+              <Form.Control type="email" placeholder="Email" />
             </Form.Group>
             <br></br>
             <Form.Group controlId="formPassword">
-              <Form.Control type="password" placeholder="Enter password" />
+              <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <br></br>
             <Button variant="success" type="submit" className="w-100">
