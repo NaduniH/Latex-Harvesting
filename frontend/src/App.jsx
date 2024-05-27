@@ -6,8 +6,10 @@ import SignUpPage from "./pages/signUp/SignUpPage";
 import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
+import RootArrangement from "./pages/Root/RootArrangement";
 // import VfaDetails from "./pages/VfaDetails";
 import Footer from "./components/Footer/footer";
+import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
+        <Route path="/root" element={<RootArrangement/>}/>
+        <Route path="/supervisor" element={<SupervisorDetails/>}/>
         {/* <Route path="/vfa" element={<VfaDetails />} /> */}
         <Route path="/footer" element={<Footer />} />
 
