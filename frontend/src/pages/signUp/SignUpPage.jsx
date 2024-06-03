@@ -27,19 +27,19 @@ const SignUpPage = () => {
           <Form className="w-75 form-background">
             <h2 className="text-center mb-4"><b>Welcome to Sign Up Page</b></h2>
             <Form.Group controlId="formName">
-              <Form.Control type="text" placeholder="Enter your name" />
+              <Form.Control type="text" placeholder="User Name" />
             </Form.Group>
             <br></br>
             <Form.Group controlId="formEmail">
-              <Form.Control type="email" placeholder="Enter your email" />
+              <Form.Control type="email" placeholder="Email" />
             </Form.Group>
             <br></br>
             <Form.Group controlId="formPhoneNumber">
-              <Form.Control type="tel" placeholder="Enter phone number" />
+              <Form.Control type="tel" placeholder="Phone number" />
             </Form.Group>
             <br></br>
             <Form.Group controlId="formPassword">
-              <Form.Control type="password" placeholder="Enter  password" />
+              <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <br></br>
             <Button variant="success" type="submit" className="w-100">
