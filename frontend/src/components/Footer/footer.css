@@ -3,6 +3,7 @@ footer {
   color: #212529;
   padding-top: 10px; /* Reduce top padding */
   padding-bottom: 10px; /* Reduce bottom padding */
+  /* width: 100vw; */
 }
 
 footer h5 {
@@ -21,4 +22,3 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-

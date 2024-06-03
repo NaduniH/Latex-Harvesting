@@ -5,8 +5,9 @@ import NavigationBar from "./components/NavBar";
 import SignUpPage from "./pages/signUp/SignUpPage";
 import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
+import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
-// import VfaDetails from "./pages/VfaDetails";
+import DryDetails from "./pages/ChartDetails/Dry(Kg)Details";
 import Footer from "./components/Footer/footer";
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
         <Route path="/navbar" element={<NavigationBar />} />
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
+        <Route path="/supervisor" element={<SupervisorDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
-        {/* <Route path="/vfa" element={<VfaDetails />} /> */}
+        <Route path="/dry" element={<DryDetails />} />
         <Route path="/footer" element={<Footer />} />
 
         {/* Add other routes here */}
