@@ -1,31 +1,25 @@
-import "./App.css";
-import Driver from "./Vehicle/Driver";
-import Estate from "./Vehicle/Estate";
-import VTA from "./Vehicle/VTA";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import NavigationBar from "./components/NavBar"; 
+
+import DriverDetails from "./pages/Employee/DriverDetails";
+import VFADetails from "./pages/ChartDetails/VFA";
+import Footer from "./components/Footer/footer";
+
 function App() {
-  
-
   return (
-    
+    <Router>
+      <Routes>
       
-        <div>
-      <h2>Driver's Details</h2>
-  <Driver/>
-      <div/>
-      <div>
-      <h2>Estate's Details</h2>
+      <Route path="/driver" element={<DriverDetails />} />
+      <Route path="/vfa" element={<VFADetails />} />
 
+      <Route path="/navbar" element={<NavigationBar/>}/>
+        <Route path="/footer" element={<Footer />} />
 
-<Estate/>
-     </div>
-
-
-<h2>vta</h2>
-<VTA/>
-</div>
-     
-     
-    
+      </Routes>
+   </Router>
   );
 }
 
