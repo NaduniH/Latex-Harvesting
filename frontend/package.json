@@ -12,10 +12,18 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
+<<<<<<< HEAD
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",
     "react-datepicker": "^6.9.0",
+=======
+    "install": "^0.13.0",
+    "npm": "^10.8.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-chartjs-2": "^5.2.0",
+>>>>>>> 5780184aa617d6836f0baa1c94fa8ae8b620371e
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1"
