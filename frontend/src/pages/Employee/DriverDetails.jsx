@@ -63,9 +63,7 @@ const DriverDetails = () => {
                     <td>{driver.contact}</td>
                     <td>{driver.email}</td>
                     <td>
-                      <Button variant="success" className="edit-button">
-                        Edit
-                      </Button>
+                      <Button variant="success" className="edit-button">Edit </Button>
                     </td>
                   </tr>
                 ))}
