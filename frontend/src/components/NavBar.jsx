@@ -1,18 +1,28 @@
-import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Image,
-  Container,
-  Button,
-} from "react-bootstrap";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./../assets/images/NavImage.png";
 import "./NavBar.css";
 
 const NavigationBar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is logged in (for example, by checking a token in localStorage)
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear user authentication (e.g., remove token from localStorage)
+    localStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
     <Navbar className="main-navbar" expand="lg" collapseOnSelect>
       <div className="container-fluid">
@@ -43,7 +53,13 @@ const NavigationBar = () => {
             <Nav.Link href="vfa">VFA</Nav.Link>
             <Nav.Link href="root">Root Arrange</Nav.Link>
             {/* <Nav.Link href="#link4">Contact</Nav.Link> */}
-            <Nav.Link href="login">Login</Nav.Link>
+            {!isLoggedIn ? (
+              <Nav.Link as={NavLink} to="/login">
+                Login
+              </Nav.Link>
+            ) : (
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+            )}
             <Nav.Link href="signup">
               <Button>Register</Button>
             </Nav.Link>

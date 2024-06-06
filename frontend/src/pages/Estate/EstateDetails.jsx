@@ -10,7 +10,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./EstateDetails.css"; // Make sure to create and use an appropriate CSS file
+import "./EstateDetails.css"; 
 import NavigationBar from "../../components/NavBar";
 import Footer from "../../components/Footer/footer";
 

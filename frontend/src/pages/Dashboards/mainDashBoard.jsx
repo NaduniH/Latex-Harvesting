@@ -8,9 +8,6 @@ import Admin from "../../assets/images/admin.png";
 import Footer from "../../components/Footer/footer";
 import "./mainDashBoard.css";
 
-// import { Container, Row, Col, Button, Table } from "react-bootstrap";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 
 const Dashboard = () => {
   const cardStyle = {
@@ -84,7 +81,7 @@ const Dashboard = () => {
         const ctx = chart.ctx;
         ctx.save();
         ctx.globalCompositeOperation = "destination-over";
-        ctx.fillStyle = "lightblue"; // Set your desired background color here
+        ctx.fillStyle = "lightblue"; 
         ctx.fillRect(0, 0, chart.width, chart.height);
         ctx.restore();
       },
@@ -96,7 +93,6 @@ const Dashboard = () => {
       <NavigationBar />
 
       <Container fluid className="dashboard-container">
-        {/* <header className="d-flex justify-content-between align-items-center py-3"> */}
         <Row>
           <Col xs={12} md={10} className="mb-4 mb-md-0 text-center">
             <h1 className="my-4 ">
@@ -112,19 +108,15 @@ const Dashboard = () => {
                 style={{
                   width: "80%",
                   height: "80%",
-                  // paddingTop: "20px",
                 }}
               />
             </div>
           </Col>
         </Row>
         <section className="mt-1">
-          {/* <Row> */}
-          {/* <Col md={1}></Col>
-            <Col md={11}> */}
+         
           <h3>Performance</h3>
-          {/* </Col> */}
-          {/* </Row> */}
+        
           <Row>
             <Col md={2} className=" justify-content-center mt-5">
               <Card

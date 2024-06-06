@@ -8,6 +8,9 @@ import HelperDetails from "./pages/Employee/HelperDetails";
 import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
 import DryDetails from "./pages/ChartDetails/Dry(Kg)Details";
+import ChemicalDetails from "./pages/ChartDetails/ChemicalDetails";
+import RootArrangement from "./pages/RootArrangement/RootArrangement";
+import AllDetails from "./pages/AllDetails/AllDetails";
 import Footer from "./components/Footer/footer";
 
 function App() {
@@ -22,9 +25,10 @@ function App() {
         <Route path="/supervisor" element={<SupervisorDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
         <Route path="/dry" element={<DryDetails />} />
+        <Route path="/chemical" element={<ChemicalDetails />} />
+        <Route path="/root" element={<RootArrangement />} />
+        <Route path="/alldetails" element={<AllDetails />} />
         <Route path="/footer" element={<Footer />} />
-
-        {/* Add other routes here */}
       </Routes>
     </Router>
   );

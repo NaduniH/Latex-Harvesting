@@ -38,6 +38,8 @@ html {
 }
 
 .edit-button,
+.delete-button,
+.add-button,
 .change-arrangement-button {
   background-color: #4caf50; /* Green */
   color: white;
