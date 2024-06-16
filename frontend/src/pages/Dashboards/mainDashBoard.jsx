@@ -1,18 +1,52 @@
-import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import NavigationBar from "../../components/NavBar";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Admin from "../../assets/images/admin.png";
+// import Admin from "../../assets/images/admin.png";
 import Footer from "../../components/Footer/footer";
 import "./mainDashBoard.css";
 
-// import { Container, Row, Col, Button, Table } from "react-bootstrap";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 
 const Dashboard = () => {
+
+  const [details, setDetails] = useState([]);
+   const [totalCustomers, setTotalCustomers] = useState(0); // State to store total customers
+  const defaultLabels = ["Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"];
+
+   useEffect(() => {
+    fetchDetails();
+   }, []);
+  
+   const fetchDetails = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/dashboard/details");
+      const data = response.data;
+      setDetails(data);
+      if (data.length > 0) {
+        setTotalCustomers(data[data.length - 1].Customer); // Extract total customers
+      }
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching supervisors:", error);
+    }
+  };
+
+   const processChartData = () => {
+    const dataMap = new Map(defaultLabels.map(label => [label, 0]));
+    details.forEach(item => {
+      if (dataMap.has(item.Root)) {
+        dataMap.set(item.Root, item.Customer);
+      }
+    });
+    const dataValues = Array.from(dataMap.values());
+    return dataValues;
+  };
+
+
   const cardStyle = {
     border: "none",
     borderRadius: "8px",
@@ -22,24 +56,53 @@ const Dashboard = () => {
     margin: "10px 0 10px 0",
   };
 
-  const cardDryStyle = {
-    backgroundColor: "#cccccc", // Gray color
-  };
+  // const cardDryStyle = {
+  //   backgroundColor: "#cccccc", // Gray color
+  // };
 
-  const cardCustomerStyle = {
-    backgroundColor: "#b0b0b0", // Slightly darker gray
-  };
+  // const cardCustomerStyle = {
+  //   backgroundColor: "#b0b0b0", // Slightly darker gray
+  // };
 
   const cardRateStyle = {
     backgroundColor: "#a0a0a0", // Darker gray
   };
 
+  // const graphData = {
+  //   labels: ["Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"],
+  //   datasets: [
+  //     {
+  //       label: "Customer Range",
+  //       data: [50, 35, 42, 78, 25, 80, 65, 48],
+  //       backgroundColor: [
+  //         "rgba(255, 99, 132, 0.2)",
+  //         "rgba(54, 162, 235, 0.2)",
+  //         "rgba(255, 206, 86, 0.2)",
+  //         "rgba(75, 192, 192, 0.2)",
+  //         "rgba(153, 102, 255, 0.2)",
+  //         "rgba(255, 159, 64, 0.2)",
+  //         "rgba(99, 255, 132, 0.2)",
+  //       ],
+  //       borderColor: [
+  //         "rgba(255, 99, 132, 1)",
+  //         "rgba(54, 162, 235, 1)",
+  //         "rgba(255, 206, 86, 1)",
+  //         "rgba(75, 192, 192, 1)",
+  //         "rgba(153, 102, 255, 1)",
+  //         "rgba(255, 159, 64, 1)",
+  //         "rgba(99, 255, 132, 1)",
+  //       ],
+  //       borderWidth: 5,
+  //     },
+  //   ],
+  // };
+
   const graphData = {
-    labels: ["Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"],
+    labels: defaultLabels,
     datasets: [
       {
         label: "Customer Range",
-        data: [50, 35, 42, 78, 25, 80, 65, 48],
+        data: processChartData(),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -63,10 +126,19 @@ const Dashboard = () => {
     ],
   };
 
+
   const graphOptions = {
     scales: {
       y: {
         beginAtZero: true,
+         ticks: {
+          callback: function (value) {
+            if (Number.isInteger(value)) {
+              return value;
+            }
+          },
+          stepSize: 1, // Ensure the ticks increment by 1
+        },
         title: {
           display: true,
           text: "Customer",
@@ -84,7 +156,7 @@ const Dashboard = () => {
         const ctx = chart.ctx;
         ctx.save();
         ctx.globalCompositeOperation = "destination-over";
-        ctx.fillStyle = "lightblue"; // Set your desired background color here
+        ctx.fillStyle = "lightblue"; 
         ctx.fillRect(0, 0, chart.width, chart.height);
         ctx.restore();
       },
@@ -96,7 +168,6 @@ const Dashboard = () => {
       <NavigationBar />
 
       <Container fluid className="dashboard-container">
-        {/* <header className="d-flex justify-content-between align-items-center py-3"> */}
         <Row>
           <Col xs={12} md={10} className="mb-4 mb-md-0 text-center">
             <h1 className="my-4 ">
@@ -104,7 +175,7 @@ const Dashboard = () => {
             </h1>
           </Col>
 
-          <Col xs={12} md={2} className="mb-4 mb-md-0 ">
+          {/* <Col xs={12} md={2} className="mb-4 mb-md-0 ">
             <div className="d-flex align-items-center">
               <Image
                 src={Admin}
@@ -112,19 +183,15 @@ const Dashboard = () => {
                 style={{
                   width: "80%",
                   height: "80%",
-                  // paddingTop: "20px",
                 }}
               />
             </div>
-          </Col>
+          </Col> */}
         </Row>
         <section className="mt-1">
-          {/* <Row> */}
-          {/* <Col md={1}></Col>
-            <Col md={11}> */}
+         
           <h3>Performance</h3>
-          {/* </Col> */}
-          {/* </Row> */}
+        
           <Row>
             <Col md={2} className=" justify-content-center mt-5">
               <Card
@@ -137,6 +204,8 @@ const Dashboard = () => {
                 </Card.Body>
               </Card>
             </Col>
+            {/* <Col md={1} className=" justify-content-center mt-5"></Col> */}
+
             <Col md={2} className=" justify-content-center mt-5">
               <Card
                 style={{ ...cardStyle, ...cardRateStyle, width: "100%" }}
@@ -144,7 +213,7 @@ const Dashboard = () => {
               >
                 <Card.Body>
                   <Card.Title>Total Customer</Card.Title>
-                  <Card.Text className="card-value">80</Card.Text>
+                  <Card.Text className="card-value">{totalCustomers}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -159,6 +228,7 @@ const Dashboard = () => {
                 </Card.Body>
               </Card>
             </Col>
+            {/* <Col md={1} className=" justify-content-center mt-5"></Col> */}
             <Col md={6} xs={12} className="d-flex justify-content-center">
               <div style={{ width: "100%", maxWidth: "900px" }}>
                 <Line data={graphData} options={graphOptions} />

@@ -1,17 +1,17 @@
 footer {
   background-color: #eeeaea;
   color: #212529;
-  padding-top: 10px; /* Reduce top padding */
-  padding-bottom: 10px; /* Reduce bottom padding */
-  /* width: 100vw; */
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  
 }
 
 footer h5 {
-  margin-bottom: 5px; /* Reduce bottom margin */
+  margin-bottom: 5px; 
 }
 
 footer address {
-  margin-bottom: 5px; /* Reduce bottom margin */
+  margin-bottom: 5px; 
 }
 
 footer a {

@@ -27,7 +27,7 @@ const dummyData = [
   },
 ];
 
-const DryKgDetails = () => {
+const VFADetails = () => {
   const [startDate, setStartDate] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,7 +35,7 @@ const DryKgDetails = () => {
     labels: ["Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"],
     datasets: [
       {
-        label: "Dry (Kg)",
+        label: "VFA",
         data: [1.0,2.0,0.4,0.8,1.2,1.6,0.5],
         backgroundColor: ["rgba(75, 192, 192, 0.2)"],
         borderColor: ["rgba(75, 192, 192, 1)"],
@@ -50,7 +50,7 @@ const DryKgDetails = () => {
         beginAtZero: true,
         title: {
           display: true,
-          text: "Dry(Kg)",
+          text: "VFA",
         },
       },
       x: {
@@ -74,7 +74,7 @@ const DryKgDetails = () => {
   return (
     <div>
       <NavigationBar />
-      <h2 className="my-4 ">Dry(Kg) Details</h2>
+      <h2 className="my-4 ">VFA Detals</h2> 
       <Container fluid>
         <br />
         <Row className="mb-3">
@@ -164,4 +164,4 @@ const DryKgDetails = () => {
   );
 };
 
-export default DryKgDetails;
+export default VFADetails;

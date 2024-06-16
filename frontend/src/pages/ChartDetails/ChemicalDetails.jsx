@@ -21,13 +21,14 @@ const dummyData = [
     LXBNumber: "001",
     StateName: "Diyalape",
     Root: "Kp",
-    DryKg: "100Kg",
+    Drykg: "100Kg",
     VFA: "0.037",
     NH3: "0.27",
+    Chemi: "100kg",
   },
 ];
 
-const DryKgDetails = () => {
+const ChemicalDetails = () => {
   const [startDate, setStartDate] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,8 +36,8 @@ const DryKgDetails = () => {
     labels: ["Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"],
     datasets: [
       {
-        label: "Dry (Kg)",
-        data: [1.0,2.0,0.4,0.8,1.2,1.6,0.5],
+        label: "Chemical",
+        data: [1.0, 2.0, 0.4, 0.8, 1.2, 1.6, 0.5],
         backgroundColor: ["rgba(75, 192, 192, 0.2)"],
         borderColor: ["rgba(75, 192, 192, 1)"],
         borderWidth: 1,
@@ -50,7 +51,7 @@ const DryKgDetails = () => {
         beginAtZero: true,
         title: {
           display: true,
-          text: "Dry(Kg)",
+          text: "Chemical",
         },
       },
       x: {
@@ -74,7 +75,7 @@ const DryKgDetails = () => {
   return (
     <div>
       <NavigationBar />
-      <h2 className="my-4 ">Dry(Kg) Details</h2>
+      <h2 className="my-4 ">Chemical Details</h2>
       <Container fluid>
         <br />
         <Row className="mb-3">
@@ -141,6 +142,7 @@ const DryKgDetails = () => {
                   <th>Dry(kg)</th>
                   <th>VFA</th>
                   <th>NH3</th>
+                  <th>Total Chemical</th>
                 </tr>
               </thead>
               <tbody>
@@ -149,9 +151,10 @@ const DryKgDetails = () => {
                     <td>{data.LXBNumber}</td>
                     <td>{data.StateName}</td>
                     <td>{data.Root}</td>
-                    <td>{data.DryKg}</td>
+                    <td>{data.Drykg}</td>
                     <td>{data.VFA}</td>
                     <td>{data.NH3}</td>
+                    <td>{data.Chemi}</td>
                   </tr>
                 ))}
               </tbody>
@@ -164,4 +167,4 @@ const DryKgDetails = () => {
   );
 };
 
-export default DryKgDetails;
+export default ChemicalDetails;
