@@ -8,6 +8,19 @@ import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
 import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
+// import VfaDetails from "./pages/VfaDetails"; 
+
+import  Footer from "./components/Footer/footer";
+import Cfa from "./pages/SupervisiorPages/Cfa";
+import Fillingbill from "./pages/SupervisiorPages/Fillingbill";
+import Estatereport from "./pages/SupervisiorPages/Estatereport";
+import FormComponent from "./pages/SupervisiorPages/FormComponent";
+import Lastcollection from "./pages/SupervisiorPages/Lastcollection";
+import Order from "./pages/SupervisiorPages/Order";
+import Pfa from "./pages/SupervisiorPages/Pfa";
+import Planning from "./pages/SupervisiorPages/planning";
+import RouteTable from "./pages/SupervisiorPages/RouteTable";
+import Todaytapping from "./pages/SupervisiorPages/Todaytapping";
 import DryDetails from "./pages/ChartDetails/Dry(Kg)Details";
 import ChemicalDetails from "./pages/ChartDetails/ChemicalDetails";
 import VFADetails from "./pages/ChartDetails/VFADetails";
@@ -35,6 +48,20 @@ function App() {
         /> */}
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
+        <Route path="/estate" element={<EstateDetailsPage />} /> 
+        <Route path="/FormComponent" element={<FormComponent/>} />
+        <Route path="/Cfa" element={<Cfa />} /> 
+        <Route path="/fillingbill" element={<Fillingbill />} /> 
+        <Route path="/Estatereport" element={<Estatereport/>} /> 
+        <Route path="/Lastcollection" element={<Lastcollection/>} />
+        <Route path="/Order" element={<Order/>} />
+        <Route path="/Pfa" element={<Pfa/>} />
+        <Route path="/Planning" element={<Planning/>} />
+        <Route path="/RouteTable" element={<RouteTable/>} />
+        <Route path="/Todaytapping" element={<Todaytapping/>} />
+
+
+
         <Route path="/supervisor" element={<SupervisorDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
         <Route path="/dry" element={<DryDetails />} />
