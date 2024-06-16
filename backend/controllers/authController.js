@@ -2,10 +2,9 @@ const db = require("../models/db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "your_jwt_secret";
+const JWT_SECRET = "@45SdghY";
 
-
-exports.register = (req, res) => {
+exports.register = async (req, res) => {
   const { name, email, phone, password } = req.body;
 
   // Check if all required fields are provided
@@ -16,21 +15,16 @@ exports.register = (req, res) => {
   // Hash the password
   const hashedPassword = bcrypt.hashSync(password, 10);
 
-  // Insert the new user into the database
-  db.query(
-    "INSERT INTO admin_details (name, email, phone, password) VALUES (?, ?, ?, ?)",
-    [name, email, phone, hashedPassword],
-    (err, result) => {
-      if (err) {
-        console.error("Error inserting user into database:", err);
-        return res.status(500).send("Server error");
-      }
-      console.log("User registered successfully:", result);
-      res.status(201).send("User registered successfully");
-    }
-  );
+  try {
+    const [result] = await db.execute(
+      "INSERT INTO admin_details (name, email, phone, password) VALUES (?, ?, ?, ?)",
+      [name, email, phone, hashedPassword]
+    );
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
-;
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -38,7 +32,7 @@ exports.login = async (req, res) => {
 
   if (!email || !password) {
     console.log("Email and password are required.");
-    return res.status(400).json({message:"email and password requied"});
+    return res.status(400).json({ message: "email and password requied" });
   }
 
   const query = "SELECT * FROM admin_details WHERE email = ?";
@@ -53,7 +47,7 @@ exports.login = async (req, res) => {
 
     if (results.length === 0) {
       console.log("Invalid email or password.");
-      return res.status(401).json({message:"Invalid email or password."});
+      return res.status(401).json({ message: "Invalid email or password." });
     }
 
     const user = results[0];
@@ -64,14 +58,12 @@ exports.login = async (req, res) => {
 
     if (!passwordMatch) {
       console.log("Invalid email or password.");
-      return res.status(401).json({message:"Invalid email or password."});
+      return res.status(401).json({ message: "Invalid email or password." });
     }
 
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
     console.log("Token generated:", token);
 
     res.status(200).json({ message: "Login successful", token });
@@ -81,3 +73,19 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.checkEmailExists = async (req, res) => {
+  const { email } = req.query;
+  try {
+    const [rows] = await db.execute(
+      "SELECT * FROM admin_details WHERE email = ?",
+      [email]
+    );
+    if (rows.length > 0) {
+      res.status(200).json({ exists: true });
+    } else {
+      res.status(200).json({ exists: false });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

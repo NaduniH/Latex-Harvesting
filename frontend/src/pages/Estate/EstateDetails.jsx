@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Container,
   Row,
@@ -10,43 +12,72 @@ import {
   FormControl,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./EstateDetails.css"; 
+import "./EstateDetails.css";
 import NavigationBar from "../../components/NavBar";
 import Footer from "../../components/Footer/footer";
 
 const EstateDetailsPage = () => {
-  const dummyData = [
-    {
-      LXBNumber: "001",
-      stateName: "Diyalape",
-      ownerName: "Mr.sunil",
-      ownerContact: "0710612604",
-      assistantContact: "0712345678",
-      helperContact: "0712657347",
-      averageTapping: "350L",
-      area: "230 area",
-      location: "Diyalape,Akurassa",
-      root: "kp",
-    },
-  ];
-
   const [searchTerm, setSearchTerm] = useState("");
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState("All");
+
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    fetchData("All");
+  }, []);
+
+  const fetchData = async (root) => {
+    console.log(root + " fetching data");
+    try {
+      const response = await fetch(`http://localhost:5000/api/root/${root}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      console.log(result);
+      if (response.ok) {
+        // alert(data);
+        setData(Array.isArray(result.results) ? result.results : []);
+        setFilteredData(Array.isArray(result.results) ? result.results : []);
+      } else {
+        // Handle errors based on response status
+        alert(data.message || "fetch data failed");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+    const filtered = data.filter((item) =>
+      Object.values(item).some((value) =>
+        value
+          .toString()
+          .toLowerCase()
+          .includes(event.target.value.toLowerCase())
+      )
+    );
+    setFilteredData(filtered);
   };
 
-  const filteredData = dummyData.filter((data) =>
-    Object.values(data).some((value) =>
-      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  const handleFilter = (root) => {
+    fetchData(root);
+    setSelectedFilter(root);
+  };
+
+  const handleNewStatePending = () => {
+    navigate("/alldetails");
+  };
 
   return (
     <div>
       <NavigationBar />
-      <h2 className="my-4 ">Estate's Details</h2>
-
+      <h2 className="my-4">Estate's Details</h2>
       <Container fluid className="vh-100">
         <br />
         <Row className="mb-3">
@@ -55,7 +86,15 @@ const EstateDetailsPage = () => {
               <div className="d-flex">
                 {["All", "Kp", "Rp", "Mg", "Ho", "Pp", "Bs", "Ag"].map(
                   (filter, index) => (
-                    <Button key={index} variant="success" className="mx-3 mb-2">
+                    <Button
+                      key={index}
+                      variant={
+                        selectedFilter === filter ? "primary" : "success"
+                      }
+                      // variant="success"
+                      className="mx-3 mb-2"
+                      onClick={() => handleFilter(filter)}
+                    >
                       {filter}
                     </Button>
                   )
@@ -82,12 +121,8 @@ const EstateDetailsPage = () => {
             </InputGroup>
           </Col>
           <Col md={2} className="d-flex justify-content-end">
-            <Button
-              variant="success"
-              className="mb-2"
-              style={{ maxWidth: "200px" }}
-            >
-              New state pending
+            <Button variant="secondary" onClick={handleNewStatePending}>
+              New State Pending
             </Button>
           </Col>
         </Row>
@@ -95,42 +130,40 @@ const EstateDetailsPage = () => {
         <br />
         <Row>
           <Col>
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>LXB Number</th>
-                  <th>State Name</th>
-                  <th>Owner Name</th>
-                  <th>Owner Contact</th>
-                  <th>Assistant Contact</th>
-                  <th>Helper Contact</th>
-                  <th>Average Tapping</th>
-                  <th>Area</th>
-                  <th>Location</th>
-                  <th>Root</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((data, index) => (
-                  <tr key={index}>
-                    <td>{data.LXBNumber}</td>
-                    <td>{data.stateName}</td>
-                    <td>{data.ownerName}</td>
-                    <td>{data.ownerContact}</td>
-                    <td>{data.assistantContact}</td>
-                    <td>{data.helperContact}</td>
-                    <td>{data.averageTapping}</td>
-                    <td>{data.area}</td>
-                    <td>{data.location}</td>
-                    <td>{data.root}</td>
-                    <td>
-                      <Button variant="success">Edit</Button>
-                    </td>
+            <div className="scrollable-table">
+              <Table striped bordered hover responsive>
+                <thead>
+                  <tr>
+                    <th>LXB Number</th>
+                    <th>State Name</th>
+                    <th>Owner Name</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Root</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {Array.isArray(filteredData) && filteredData.length > 0 ? (
+                    filteredData.map((data, index) => (
+                      <tr key={index}>
+                        <td>{data.lxb_no}</td>
+                        <td>{data.estate_name}</td>
+                        <td>{data.full_name}</td>
+                        <td>{data.email}</td>
+                        <td>{data.location}</td>
+                        <td>{data.root}</td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="11" className="text-center">
+                        No data available
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </Table>
+            </div>
           </Col>
         </Row>
       </Container>

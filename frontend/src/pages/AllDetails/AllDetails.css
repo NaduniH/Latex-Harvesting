@@ -1,34 +1,57 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.owner-details,
-.land-details,
-.bank-details {
-  border: 1px solid #ddd;
-  margin: 20px;
-  padding: 20px;
-  width: 80%;
+.vh-100 {
+  height: 100vh;
+  background-color: #f7f7f7;
 }
 
 h2 {
-  background-color: #e9f5e9;
-  padding: 10px;
-  margin: -20px -20px 20px -20px;
-  text-align: center;
+  color: #333;
+  font-weight: bold;
+  margin: 50px;
 }
+
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background-color: rgb(235, 248, 235);
 }
 
+th,
 td {
+  border: 1px solid #ddd;
   padding: 8px;
-  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: rgb(197, 250, 197);
+}
+
+.seeMore-button {
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.approve-button button {
+  /* padding: 10px 20px; */
+  background-color: #ff5555;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+}
+.btn .approve-button {
+  background-color: #ff5555;
+}
+.approve-button button:hover {
+  background-color: #ff0000;
 }
 
 .images {
@@ -40,23 +63,4 @@ td {
   width: 100px;
   height: 100px;
   margin: 0 10px;
-}
-
-.approve-button {
-  margin-top: 20px;
-  margin-left: 800px;
-}
-
-.approve-button button {
-  padding: 10px 20px;
-  background-color: #ff5555;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-.approve-button button:hover {
-  background-color: #ff0000;
 }

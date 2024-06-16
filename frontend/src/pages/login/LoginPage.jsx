@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LoginPage.css";
 import LoginImg from "../../assets/images/loginImg.jpg";
+import { AuthContext } from "./../../components/AuthContext"; // Adjust the import path as necessary
 
 const LoginPage = () => {
   // const [formData, setFormData] = useState({
@@ -14,9 +15,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  // const { login } = useContext(AuthContext);
   const [error, setError] = useState("");
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const LoginPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({  email, password }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await response.json();
 
@@ -36,6 +36,7 @@ const LoginPage = () => {
       if (response.ok) {
         // Assuming response contains a token if login is successful
         localStorage.setItem("authToken", data.token);
+        // login(data.token);
         navigate("/dashboard");
       } else {
         // Handle errors based on response status

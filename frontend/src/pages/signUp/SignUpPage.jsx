@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col, Form, Button, Image } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs"; // Import bcryptjs for password hashing
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SignUpPage.css";
 import SignUpImg from "../../assets/images/loginImg.jpg";
+import { AuthContext } from './../../components/AuthContext'; // Adjust the import path as necessary
 
 const SignUpPage = () => {
   const [name, setName] = useState("");
@@ -14,6 +15,8 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [error, setEmailError] = useState("");
+  // const { login } = useContext(AuthContext);
 
   const validateName = (name) => {
     const re = /^[a-zA-Z\s]+$/;
@@ -101,7 +104,6 @@ const SignUpPage = () => {
       });
     }
   };
-  
 
   const validatePassword = (password) => {
     return password.length === 8;
@@ -128,18 +130,41 @@ const SignUpPage = () => {
       return;
     }
 
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+      setEmailError("Email already exists.");
+      return;
+    } else {
+      setEmailError("");
+    }
+
     try {
-      // const hashedPassword = await bcrypt.hash(password, 10);
       const response = await axios.post("http://localhost:5000/api/register", {
         name,
         email,
         phone,
         password,
       });
-      alert(response.data);
+      // alert(response.data);
+      // login(data.token);
       navigate("/login");
     } catch (error) {
       alert(error.response.data);
+    }
+  };
+
+  const checkEmailExists = async (email) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/check-email",
+        {
+          params: { email },
+        }
+      );
+      return response.data.exists;
+    } catch (error) {
+      console.error("Error checking email:", error);
+      return false;
     }
   };
 
@@ -159,6 +184,7 @@ const SignUpPage = () => {
             <h2 className="text-center mb-4">
               <b>Welcome to Sign Up Page</b>
             </h2>
+            {error && <div className="alert alert-danger">{error}</div>}
             <Form.Group controlId="formName">
               <Form.Control
                 type="text"

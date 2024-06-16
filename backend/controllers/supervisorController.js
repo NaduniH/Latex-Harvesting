@@ -1,13 +1,18 @@
 const db = require("../models/db");
 
 exports.createSupervisor = async (req, res) => {
-  const { name, email, phone, password } = req.body;
+  const { emp_no, name, root, email, phone } = req.body;
+
+  if (!emp_no || !name || !root || !email || !phone) {
+    return res.status(400).send("All fields are required.");
+  }
+
   try {
     const [result] = await db.execute(
-      "INSERT INTO supervisor_details (name, email, phone, password) VALUES (?, ?, ?, ?)",
-      [name, email, phone, password]
+      "INSERT INTO supervisor_details (emp_no, name, root, email, phone) VALUES (?, ?, ?, ?, ?)",
+      [emp_no, name, root, email, phone]
     );
-    res.status(201).json({ id: result.insertId, name, email, phone, password });
+    res.status(201).json({ id: result.insertId, emp_no, name, root, email, phone });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -34,13 +39,18 @@ exports.deleteSupervisor = async (req, res) => {
 
 exports.updateSupervisor = async (req, res) => {
   const { id } = req.params;
-  const { name, email, phone, password } = req.body;
+  const { emp_no, name, root, email, phone } = req.body;
+
+  if (!emp_no || !name || !root || !email || !phone) {
+    return res.status(400).send("All fields are required.");
+  }
+
   try {
     await db.execute(
-      "UPDATE supervisor_details SET name = ?, email = ?, phone = ?, password = ? WHERE id = ?",
-      [name, email, phone, password, id]
+      "UPDATE supervisor_details SET emp_no = ?, name = ?, root = ?, email = ?, phone = ? WHERE id = ?",
+      [emp_no, name, root, email, phone, id]
     );
-    res.status(200).json({ id, name, email, phone, password });
+    res.status(200).json({ id, emp_no, name, root, email, phone });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

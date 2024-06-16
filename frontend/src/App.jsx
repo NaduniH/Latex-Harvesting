@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPage from "./pages/login/LoginPage";
 import NavigationBar from "./components/NavBar";
 import SignUpPage from "./pages/signUp/SignUpPage";
@@ -9,28 +10,42 @@ import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
 import DryDetails from "./pages/ChartDetails/Dry(Kg)Details";
 import ChemicalDetails from "./pages/ChartDetails/ChemicalDetails";
-import RootArrangement from "./pages/RootArrangement/RootArrangement";
+import VFADetails from "./pages/ChartDetails/VFADetails";
+// import RootArrangement from "./pages/RootArrangement/RootArrangement";
 import AllDetails from "./pages/AllDetails/AllDetails";
 import Footer from "./components/Footer/footer";
+import PrivateRoute from "./components/PrivateRoute";
+import AuthProvider from "./components/AuthContext";
 
 function App() {
   return (
+    // <AuthProvider>
     <Router>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/navbar" element={<NavigationBar />} />
+        {/* <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <MainDashBoard />
+            </PrivateRoute>
+          }
+        /> */}
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
         <Route path="/supervisor" element={<SupervisorDetails />} />
         <Route path="/estate" element={<EstateDetailsPage />} />
         <Route path="/dry" element={<DryDetails />} />
         <Route path="/chemical" element={<ChemicalDetails />} />
-        <Route path="/root" element={<RootArrangement />} />
+        <Route path="/vfa" element={<VFADetails/>} />
+        {/* <Route path="/root" element={<RootArrangement />} /> */}
         <Route path="/alldetails" element={<AllDetails />} />
         <Route path="/footer" element={<Footer />} />
       </Routes>
     </Router>
+    // </AuthProvider>
   );
 }
 
