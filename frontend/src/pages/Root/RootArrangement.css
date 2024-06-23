@@ -100,10 +100,7 @@ html {
   background-color: #45a049;
 
 }
-.controls text-end{
-border-radius: 10px;
+.text-start{
+  margin-top: 0px;
 
-}
-.btn1{
-  margin-left: 1050px;
 }

@@ -1,7 +1,6 @@
 footer {
   background-color: #eeeaea;
   color: #212529;
-<<<<<<< HEAD
   padding-top: 10px; 
   padding-bottom: 10px; 
   
@@ -13,18 +12,6 @@ footer h5 {
 
 footer address {
   margin-bottom: 5px; 
-=======
-  padding-top: 10px; /* Reduce top padding */
-  padding-bottom: 10px; /* Reduce bottom padding */
-}
-
-footer h5 {
-  margin-bottom: 5px; /* Reduce bottom margin */
-}
-
-footer address {
-  margin-bottom: 5px; /* Reduce bottom margin */
->>>>>>> 5780184aa617d6836f0baa1c94fa8ae8b620371e
 }
 
 footer a {
@@ -34,9 +21,4 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 5780184aa617d6836f0baa1c94fa8ae8b620371e

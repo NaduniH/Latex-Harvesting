@@ -1,25 +1,4 @@
 .main-navbar {
-<<<<<<< HEAD
-    background-color: rgb(219, 219, 221);
-}
-  
-.navbar {
-    width: 100%;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    text-decoration: none;
-}
-
-.btn {
-    border-radius: 1rem;
-    background-color: rgb(16, 193, 52);
-    border: none;
-}
-
-.btn:hover {
-    background-color: rgb(18, 195, 124);
-}
-=======
   background-color: rgb(219, 219, 221);
 }
 
@@ -31,11 +10,10 @@
 }
 
 .btn {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: rgb(16, 193, 52);
   border: none;
 }
 .btn:hover {
   background-color: rgb(18, 195, 124);
 }
->>>>>>> 5780184aa617d6836f0baa1c94fa8ae8b620371e
