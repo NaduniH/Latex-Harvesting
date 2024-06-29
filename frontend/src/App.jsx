@@ -11,8 +11,6 @@ import HelperDetails from "./pages/Employee/HelperDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
 // import VfaDetails from "./pages/VfaDetails";
 import Footer from "./components/Footer/footer";
-import RootArrangement from "./pages/Root/RootArrangement";
-
 
 function App() {
   return (
@@ -23,7 +21,6 @@ function App() {
         <Route path="/navbar" element={<NavigationBar />} />
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
-        <Route path="/root" element={<RootArrangement />} /> 
         <Route path="/estate" element={<EstateDetailsPage />} />
         <Route path="/driver" element={<DriverDetails />} />
         <Route path="/vfa" element={<VFADetails />} />
