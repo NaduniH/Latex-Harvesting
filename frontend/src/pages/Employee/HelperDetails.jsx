@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Table, Button, Container, Row, Col, Form } from "react-bootstrap";
 import axios from "axios";
@@ -108,6 +109,33 @@ const HelperDetails = () => {
 
   // Function to change current page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // Dummy data
+  const helpers = [
+    {
+      empNo: 1200,
+      name: "Mr.Nihal",
+      vehicle: "IF4499",
+      route: "Kamburupitiya",
+      contact: "0712857347",
+      email: "nihal@gmail.com",
+    },
+    {
+      empNo: 1201,
+      name: "Mr.Sachintha",
+      vehicle: "IF4498",
+      route: "Horana",
+      contact: "0712851416",
+      email: "sachintha@gmail.com",
+    },
+    {
+      empNo: 1202,
+      name: "Mr.Kavishka",
+      vehicle: "IF4497",
+      route: "Rathnapura",
+      contact: "0779638565",
+      email: "kavishka@gmail.com",
+    },
+  ];
 
   return (
     <div>
