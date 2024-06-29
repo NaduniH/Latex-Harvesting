@@ -1,3 +1,4 @@
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -7,6 +8,9 @@ const authRoutes = require("./routes/authRoutes");
 const estateRoutes = require("./routes/estateRoutes");
 const allEstateRoute = require("./routes/allEstateRoute");
 const dashboardRoute = require("./routes/dashboardRoute");
+const rootArrangementRoutes = require('./routes/RootArrangementRoutes');
+const driverRoutes = require('./routes/DriverRoutes');
+const helperRoutes = require('./routes/HelperRoutes');
 
 const app = express();
 app.use(cors());
@@ -16,6 +20,9 @@ app.use("/api", supervisorRoutes);
 app.use("/api", estateRoutes);
 app.use("/api", allEstateRoute);
 app.use("/api", dashboardRoute);
+app.use('/api/arrangements', rootArrangementRoutes);
+app.use('/api/drivers', driverRoutes);
+app.use('/api/helpers', helperRoutes);
 
 console.log("index");
 

@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPage from "./pages/login/LoginPage";
 import NavigationBar from "./components/NavBar";
+import DriverDetails from "./pages/Employee/DriverDetails";
+import VFADetails from "./pages/ChartDetails/VFA";
+import LoginPage from "./pages/login/LoginPage";
 import SignUpPage from "./pages/signUp/SignUpPage";
 import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
@@ -27,6 +30,7 @@ import VFADetails from "./pages/ChartDetails/VFADetails";
 // import RootArrangement from "./pages/RootArrangement/RootArrangement";
 import AllDetails from "./pages/AllDetails/AllDetails";
 import Footer from "./components/Footer/footer";
+import RootArrangement from "./pages/Root/RootArrangement";
 import PrivateRoute from "./components/PrivateRoute";
 import AuthProvider from "./components/AuthContext";
 
@@ -48,6 +52,9 @@ function App() {
         /> */}
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
+        <Route path="/root" element={<RootArrangement />} /> 
+        <Route path="/driver" element={<DriverDetails />} />
+        {/* <Route path="/vfa" element={<VfaDetails />} /> */}
         <Route path="/estate" element={<EstateDetailsPage />} /> 
         <Route path="/FormComponent" element={<FormComponent/>} />
         <Route path="/Cfa" element={<Cfa />} /> 
@@ -63,7 +70,6 @@ function App() {
 
 
         <Route path="/supervisor" element={<SupervisorDetails />} />
-        <Route path="/estate" element={<EstateDetailsPage />} />
         <Route path="/dry" element={<DryDetails />} />
         <Route path="/chemical" element={<ChemicalDetails />} />
         <Route path="/vfa" element={<VFADetails/>} />

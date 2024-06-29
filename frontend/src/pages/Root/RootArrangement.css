@@ -16,7 +16,6 @@ html {
 
 .employee-details h2 {
   margin-bottom: 20px;
-  margin-right: 500px;
 }
 
 .employee-details table {
@@ -38,10 +37,6 @@ html {
 }
 
 .button {
-.edit-button,
-.delete-button,
-.add-button,
-.change-arrangement-button {
   background-color: #4caf50; /* Green */
   color: white;
   border: none;
@@ -55,8 +50,6 @@ html {
 }
 
 .button:hover {
-.edit-button:hover,
-.change-arrangement-button:hover {
   background-color: #45a049;
 }
 
@@ -107,11 +100,7 @@ html {
   background-color: #45a049;
 
 }
-.controls text-end{
-border-radius: 10px;
-
-}
-.btn1{
-  margin-left: 1050px;
+.text-start{
+  margin-top: 0px;
 
 }
