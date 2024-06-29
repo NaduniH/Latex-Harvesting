@@ -218,9 +218,7 @@ const DriverDetails = () => {
                       <td>{driver.contactNumber}</td>
                       <td>{driver.email}</td>
                       <td>
-                        <Button variant="success" onClick={() => handleEditClick(driver)}>
-                          Edit
-                        </Button>
+                      <Button variant="success" className="edit-button">Edit </Button>
                       </td>
                       <td>
                         <Button variant="danger" onClick={() => handleDelete(driver.id)}>
