@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Table, Button, Container, Row, Col, Form } from "react-bootstrap";
 import axios from "axios";
@@ -70,12 +69,20 @@ const HelperDetails = () => {
     try {
       if (editHelper) {
         // Update existing helper
-        await axios.put(`http://localhost:5000/api/helpers/${editHelper.id}`, editHelper); // Use editHelper directly, as it's already updated
-        const updatedHelpers = helpers.map((h) => (h.id === editHelper.id ? editHelper : h));
+        await axios.put(
+          `http://localhost:5000/api/helpers/${editHelper.id}`,
+          editHelper
+        ); // Use editHelper directly, as it's already updated
+        const updatedHelpers = helpers.map((h) =>
+          h.id === editHelper.id ? editHelper : h
+        );
         setHelpers(updatedHelpers);
       } else {
         // Add new helper
-        const response = await axios.post("http://localhost:5000/api/helpers", newHelper);
+        const response = await axios.post(
+          "http://localhost:5000/api/helpers",
+          newHelper
+        );
         setHelpers([...helpers, response.data]);
       }
       setShowForm(false); // Hide form after submission
@@ -110,32 +117,32 @@ const HelperDetails = () => {
   // Function to change current page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   // Dummy data
-  const helpers = [
-    {
-      empNo: 1200,
-      name: "Mr.Nihal",
-      vehicle: "IF4499",
-      route: "Kamburupitiya",
-      contact: "0712857347",
-      email: "nihal@gmail.com",
-    },
-    {
-      empNo: 1201,
-      name: "Mr.Sachintha",
-      vehicle: "IF4498",
-      route: "Horana",
-      contact: "0712851416",
-      email: "sachintha@gmail.com",
-    },
-    {
-      empNo: 1202,
-      name: "Mr.Kavishka",
-      vehicle: "IF4497",
-      route: "Rathnapura",
-      contact: "0779638565",
-      email: "kavishka@gmail.com",
-    },
-  ];
+  // const helpers = [
+  //   {
+  //     empNo: 1200,
+  //     name: "Mr.Nihal",
+  //     vehicle: "IF4499",
+  //     route: "Kamburupitiya",
+  //     contact: "0712857347",
+  //     email: "nihal@gmail.com",
+  //   },
+  //   {
+  //     empNo: 1201,
+  //     name: "Mr.Sachintha",
+  //     vehicle: "IF4498",
+  //     route: "Horana",
+  //     contact: "0712851416",
+  //     email: "sachintha@gmail.com",
+  //   },
+  //   {
+  //     empNo: 1202,
+  //     name: "Mr.Kavishka",
+  //     vehicle: "IF4497",
+  //     route: "Rathnapura",
+  //     contact: "0779638565",
+  //     email: "kavishka@gmail.com",
+  //   },
+  // ];
 
   return (
     <div>
@@ -145,7 +152,7 @@ const HelperDetails = () => {
           <Col>
             <h2>Helper Details</h2>
           </Col>
-          <Col >
+          <Col>
             <Button className="btn1" variant="primary" onClick={toggleForm}>
               {showForm ? "Cancel" : "Add"}
             </Button>
@@ -182,7 +189,11 @@ const HelperDetails = () => {
                     <Form.Control
                       type="text"
                       name="contactNumber"
-                      value={editHelper ? editHelper.contactNumber : newHelper.contactNumber}
+                      value={
+                        editHelper
+                          ? editHelper.contactNumber
+                          : newHelper.contactNumber
+                      }
                       onChange={handleInputChange}
                       required
                     />
@@ -207,7 +218,11 @@ const HelperDetails = () => {
                       required
                     />
                   </Form.Group>
-                  <Button className="controls text-end" variant="success" type="submit">
+                  <Button
+                    className="controls text-end"
+                    variant="success"
+                    type="submit"
+                  >
                     {editHelper ? "Update Helper" : "Add Helper"}
                   </Button>
                 </Form>
@@ -239,12 +254,18 @@ const HelperDetails = () => {
                       <td>{helper.email}</td>
                       <td>{helper.nic}</td>
                       <td>
-                        <Button variant="success" onClick={() => handleEditClick(helper)}>
+                        <Button
+                          variant="success"
+                          onClick={() => handleEditClick(helper)}
+                        >
                           Edit
                         </Button>
                       </td>
                       <td>
-                        <Button variant="danger" onClick={() => handleDelete(helper.id)}>
+                        <Button
+                          variant="danger"
+                          onClick={() => handleDelete(helper.id)}
+                        >
                           Delete
                         </Button>
                       </td>
@@ -259,7 +280,6 @@ const HelperDetails = () => {
                 )}
               </tbody>
             </Table>
-            
           </Col>
         </Row>
       </Container>

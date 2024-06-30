@@ -1,19 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./pages/login/LoginPage";
 import NavigationBar from "./components/NavBar";
 import DriverDetails from "./pages/Employee/DriverDetails";
-import VFADetails from "./pages/ChartDetails/VFA";
-import LoginPage from "./pages/login/LoginPage";
+// import VFADetails from "./pages/ChartDetails/VFA";
 import SignUpPage from "./pages/signUp/SignUpPage";
 import MainDashBoard from "./pages/Dashboards/mainDashBoard";
 import HelperDetails from "./pages/Employee/HelperDetails";
 import SupervisorDetails from "./pages/Employee/SupervisorDetails";
 import EstateDetailsPage from "./pages/Estate/EstateDetails";
-// import VfaDetails from "./pages/VfaDetails"; 
+// import VfaDetails from "./pages/VfaDetails";
 
-import  Footer from "./components/Footer/footer";
+// import  Footer from "./components/Footer/footer";
 import Cfa from "./pages/SupervisiorPages/Cfa";
 import Fillingbill from "./pages/SupervisiorPages/Fillingbill";
 import Estatereport from "./pages/SupervisiorPages/Estatereport";
@@ -52,27 +51,25 @@ function App() {
         /> */}
         <Route path="/dashboard" element={<MainDashBoard />} />
         <Route path="/helper" element={<HelperDetails />} />
-        <Route path="/root" element={<RootArrangement />} /> 
+        <Route path="/root" element={<RootArrangement />} />
         <Route path="/driver" element={<DriverDetails />} />
         {/* <Route path="/vfa" element={<VfaDetails />} /> */}
-        <Route path="/estate" element={<EstateDetailsPage />} /> 
-        <Route path="/FormComponent" element={<FormComponent/>} />
-        <Route path="/Cfa" element={<Cfa />} /> 
-        <Route path="/fillingbill" element={<Fillingbill />} /> 
-        <Route path="/Estatereport" element={<Estatereport/>} /> 
-        <Route path="/Lastcollection" element={<Lastcollection/>} />
-        <Route path="/Order" element={<Order/>} />
-        <Route path="/Pfa" element={<Pfa/>} />
-        <Route path="/Planning" element={<Planning/>} />
-        <Route path="/RouteTable" element={<RouteTable/>} />
-        <Route path="/Todaytapping" element={<Todaytapping/>} />
-
-
+        <Route path="/estate" element={<EstateDetailsPage />} />
+        <Route path="/FormComponent" element={<FormComponent />} />
+        <Route path="/Cfa" element={<Cfa />} />
+        <Route path="/fillingbill" element={<Fillingbill />} />
+        <Route path="/Estatereport" element={<Estatereport />} />
+        <Route path="/Lastcollection" element={<Lastcollection />} />
+        <Route path="/Order" element={<Order />} />
+        <Route path="/Pfa" element={<Pfa />} />
+        <Route path="/Planning" element={<Planning />} />
+        <Route path="/RouteTable" element={<RouteTable />} />
+        <Route path="/Todaytapping" element={<Todaytapping />} />
 
         <Route path="/supervisor" element={<SupervisorDetails />} />
         <Route path="/dry" element={<DryDetails />} />
         <Route path="/chemical" element={<ChemicalDetails />} />
-        <Route path="/vfa" element={<VFADetails/>} />
+        <Route path="/vfa" element={<VFADetails />} />
         {/* <Route path="/root" element={<RootArrangement />} /> */}
         <Route path="/alldetails" element={<AllDetails />} />
         <Route path="/footer" element={<Footer />} />
