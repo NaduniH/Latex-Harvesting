@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { height } from '@mui/system';
+// import { height } from '@mui/system';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
