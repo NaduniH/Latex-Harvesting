@@ -12,7 +12,7 @@ function CfaChart() {
                 <th scope="col">No</th>
                 <th scope="col">lb number</th>
                 <th scope="col">state name</th>
-                <th scope="col">drc</th>
+                <th scope="col">drc</th>ghfgfdgg
                 <th scope="col">liters</th>
                 <th scope="col">dry kg/before</th>
                 <th scope="col">dry kg/after</th>
