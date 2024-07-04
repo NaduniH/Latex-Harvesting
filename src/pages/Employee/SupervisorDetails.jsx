@@ -4,32 +4,29 @@ import "./EmployeeDetails.css";
 import NavigationBar from "../../components/NavBar";
 import Footer from "../../components/Footer/footer";
 
-const HelperDetails = () => {
+const SupervisorDetails = () => {
   // Dummy data
-  const helpers = [
+  const supervisor = [
     {
-      empNo: 1200,
-      name: "Mr.Nihal",
-      vehicle: "IF4499",
+      empNo: 1540,
+      name: "Mr.Aslin",
       route: "Kamburupitiya",
       contact: "0712857347",
-      email: "nihal@gmail.com",
+      email: "aslin@gmail.com",
     },
     {
-      empNo: 1201,
-      name: "Mr.Sachintha",
-      vehicle: "IF4498",
-      route: "Horana",
-      contact: "0712851416",
-      email: "sachintha@gmail.com",
-    },
-    {
-      empNo: 1202,
-      name: "Mr.Kavishka",
-      vehicle: "IF4497",
+      empNo: 1541,
+      name: "Mr.Devin",
       route: "Rathnapura",
+      contact: "07128514169",
+      email: "devin@.com",
+    },
+    {
+      empNo: 1542,
+      name: "Mr.Amal",
+      route: "Monaragala",
       contact: "0779638565",
-      email: "kavishka@gmail.com",
+      email: "amal@gmail.com",
     },
   ];
 
@@ -37,10 +34,10 @@ const HelperDetails = () => {
     <div>
       <NavigationBar />
 
-      <Container className="employee-details my-4">
+      <Container className="employee-details my-2">
         <Row>
           <Col>
-            <h2>Helper's Details</h2>
+            <h2>Supervisor's Details</h2>
           </Col>
         </Row>
         <Row>
@@ -49,8 +46,7 @@ const HelperDetails = () => {
               <thead>
                 <tr>
                   <th>Emp.no</th>
-                  <th>Helper Name</th>
-                  <th>Vehicle</th>
+                  <th>Supervisor Name</th>
                   <th>Route</th>
                   <th>Contact</th>
                   <th>Email</th>
@@ -58,14 +54,13 @@ const HelperDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                {helpers.map((helper, index) => (
+                {supervisor.map((supervisor, index) => (
                   <tr key={index}>
-                    <td>{helper.empNo}</td>
-                    <td>{helper.name}</td>
-                    <td>{helper.vehicle}</td>
-                    <td>{helper.route}</td>
-                    <td>{helper.contact}</td>
-                    <td>{helper.email}</td>
+                    <td>{supervisor.empNo}</td>
+                    <td>{supervisor.name}</td>
+                    <td>{supervisor.route}</td>
+                    <td>{supervisor.contact}</td>
+                    <td>{supervisor.email}</td>
                     <td>
                       <Button variant="success" className="edit-button">
                         Edit
@@ -90,4 +85,4 @@ const HelperDetails = () => {
   );
 };
 
-export default HelperDetails;
+export default SupervisorDetails;

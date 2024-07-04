@@ -19,6 +19,10 @@ import Pfa from "./pages/SupervisiorPages/Pfa";
 import Planning from "./pages/SupervisiorPages/planning";
 import RouteTable from "./pages/SupervisiorPages/RouteTable";
 import Todaytapping from "./pages/SupervisiorPages/Todaytapping";
+import Home from  "./pages/SupervisiorPages/Home";
+
+import TopicBox from "./components/SupervisiorNav/TopicBox";
+
 
 function App() {
   return (
@@ -40,6 +44,10 @@ function App() {
         <Route path="/Planning" element={<Planning/>} />
         <Route path="/RouteTable" element={<RouteTable/>} />
         <Route path="/Todaytapping" element={<Todaytapping/>} />
+        <Route path="/topicbox" element={<TopicBox/>} />
+        <Route path="/Home" element={<Home/>} />
+       
+
 
 
 
