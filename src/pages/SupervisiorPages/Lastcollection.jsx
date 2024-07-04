@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
-import '../../components/SupervisiorNav/TopicBox';
-import TopicBox from '../../components/SupervisiorNav/TopicBox';
-
-
+import React, { useState, useEffect } from 'react';
 
 const Lastcollection = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [routes] = useState([
-    { id: 1, lxbNumber: 'lxb 109', stateName: 'walahaduwa', lastCollectionDate: '2024-04-22' },
-    { id: 2, lxbNumber: 'lxb 201', stateName: 'walahaduwa', lastCollectionDate: '2024-04-22' },
-    { id: 3, lxbNumber: 'lxb 021', stateName: 'horana', lastCollectionDate: '2024-05-21' }
-  ]);
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/routes')
+      .then(response => response.json())
+      .then(data => setRoutes(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-  };
-
-  const calculateDaysAgo = (date) => {
-    const today = new Date();
-    const collectionDate = new Date(date);
-    const differenceInTime = today.getTime() - collectionDate.getTime();
-    return Math.ceil(differenceInTime / (1000 * 3600 * 24));
   };
 
   const filteredRoutes = routes.filter(route =>
@@ -29,7 +21,6 @@ const Lastcollection = () => {
 
   return (
     <div className="route-table">
-        <TopicBox/>
     <style>
       {`
       body {
@@ -98,7 +89,6 @@ const Lastcollection = () => {
             <th>LXB number</th>
             <th>State name</th>
             <th>Last collection date</th>
-            <th>Collection Date</th>
           </tr>
         </thead>
         <tbody>
@@ -108,7 +98,6 @@ const Lastcollection = () => {
               <td>{route.lxbNumber}</td>
               <td>{route.stateName}</td>
               <td>{route.lastCollectionDate}</td>
-              <td>{calculateDaysAgo(route.lastCollectionDate)} days ago</td>
             </tr>
           ))}
         </tbody>

@@ -11,7 +11,7 @@ const Planning = () => {
   const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getdataplanning')
+    axios.get('latex-collecting.cv6k2qqyuwkp.ap-southeast-2.rds.amazonaws.com/getdataplanning')
       .then(response => {
         const data = response.data.map(route => ({
           ...route,
